@@ -12,10 +12,23 @@ spec:
     repoURL: https://istio-release.storage.googleapis.com/charts
     targetRevision: 1.28.1
     helm:
+      values: |
+        global:
+          meshID: home-mesh
+          multiCluster:
+            clusterName: Cluster-Proxy
+          network: home-network
+            |
       releaseName: istiod
   destination:
     server: "https://kubernetes.default.svc"
     namespace: istio-system
+  values:
+    global:
+      meshID: home-mesh
+      multiCluster:
+        clusterName: Cluster-Main
+      network: home-network
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
