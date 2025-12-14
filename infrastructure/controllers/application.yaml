@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/dokokitsune/homelab-reverse-proxy.git
     targetRevision: main
-    path: infratructure/controllers    # folder with child app manifests
+    path: infrastructure/controllers 
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
