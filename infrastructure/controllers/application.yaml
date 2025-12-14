@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra-controllers
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/dokokitsune/homelab-reverse-proxy.git
+    targetRevision: main
+    path: infratructure/controllers    # folder with child app manifests
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
