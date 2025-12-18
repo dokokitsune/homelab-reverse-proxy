@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: istio
+  name: external-dns
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "1"
 spec:
   project: default
   source:
-    chart: istiod
+    chart: external-dns
     repoURL: https://kubernetes-sigs.github.io/external-dns/
     targetRevision: 1.19.0
     helm:
