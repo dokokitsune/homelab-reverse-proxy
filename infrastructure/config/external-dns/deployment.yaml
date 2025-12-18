@@ -4,6 +4,8 @@ metadata:
   name: external-dns
   namespace: kube-system
 spec:
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: external-dns
