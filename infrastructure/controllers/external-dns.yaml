@@ -12,19 +12,19 @@ spec:
     repoURL: https://kubernetes-sigs.github.io/external-dns/
     targetRevision: 1.19.0
     helm:
+      values: |
+        provider:
+          name: cloudflare
+        env:
+          - name: CF_API_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: cloudflare-api-key
+                key: apiKey
       releaseName: external-dns
   destination:
     server: "https://kubernetes.default.svc"
     namespace: external-dns
-  values: |
-    provider:
-      name: cloudflare
-    env:
-      - name: CF_API_TOKEN
-        valueFrom:
-          secretKeyRef:
-            name: cloudflare-api-key
-            key: apiKey
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
