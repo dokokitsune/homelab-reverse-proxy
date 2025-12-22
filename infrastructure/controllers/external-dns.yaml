@@ -15,6 +15,13 @@ spec:
       values: |
         provider:
           name: cloudflare
+        extraArgs:
+          - --source=istio-gateway
+          - --provider=cloudflare
+          - --cloudflare-proxied
+          - --cloudflare-regional-services
+          - --cloudflare-region-key="us"
+          - --cloudflare-record-comment="provisioned by external-dns"
         env:
           - name: CF_API_TOKEN
             valueFrom:
