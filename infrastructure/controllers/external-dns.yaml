@@ -15,6 +15,10 @@ spec:
       values: |
         provider:
           name: cloudflare
+        sources:
+          - istio-gateway
+          - service
+          - ingress
         extraArgs:
           - --source=istio-gateway
           - --cloudflare-proxied
