@@ -17,7 +17,6 @@ spec:
           name: cloudflare
         extraArgs:
           - --source=istio-gateway
-          - --provider=cloudflare
           - --cloudflare-proxied
           - --cloudflare-regional-services
           - --cloudflare-region-key="us"
