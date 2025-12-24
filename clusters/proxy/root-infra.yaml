@@ -9,8 +9,8 @@ spec:
     repoURL: https://github.com/dokokitsune/homelab-reverse-proxy.git
     targetRevision: main
     path: infrastructure
-  directory:
-    recursive: true
+    directory:
+      recursive: true
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
