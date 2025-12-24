@@ -21,7 +21,6 @@ spec:
           - service
           - ingress
         extraArgs:
-          - --cloudflare-proxied
           - --cloudflare-regional-services
           - --cloudflare-region-key="us"
           - --cloudflare-record-comment="provisioned by external-dns"
