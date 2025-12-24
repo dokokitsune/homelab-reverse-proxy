@@ -7,7 +7,7 @@ spec:
   hosts:
     - "jellyfin.dokocloud.net"
   gateways:
-    - media-gateway
+    - istio-system/media-gateway
   http:
     - route:
         - destination:
