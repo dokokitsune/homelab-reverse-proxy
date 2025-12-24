@@ -20,7 +20,6 @@ spec:
           - service
           - ingress
         extraArgs:
-          - --source=istio-gateway
           - --cloudflare-proxied
           - --cloudflare-regional-services
           - --cloudflare-region-key="us"
