@@ -1,32 +1,37 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: istio-gateway
+  name: istiod
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "1"
 spec:
   project: default
   source:
-    chart: gateway
+    chart: istiod
     repoURL: https://istio-release.storage.googleapis.com/charts
     targetRevision: 1.28.1
     helm:
       values: |
-        service:
-          type: LoadBalancer
-          ports:
-            - name: tls-istiod
-              port: 15012
-              targetPort: 15012
-            - name: tls-mesh
-              port: 15443
-              targetPort: 15443
-      releaseName: istio-gateway
+        global:
+          meshID: home-mesh
+          multiCluster:
+            clusterName: Cluster-Proxy
+          network: home-network
+            |
+      releaseName: istiod
   destination:
     server: "https://kubernetes.default.svc"
     namespace: istio-system
+  values:
+    global:
+      meshID: home-mesh
+      multiCluster:
+        clusterName: cluster-main
+      network: home-network
   syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
     automated:
       selfHeal: true
       prune: true
