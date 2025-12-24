@@ -21,8 +21,6 @@ spec:
           - service
           - ingress
         extraArgs:
-          - --cloudflare-regional-services
-          - --cloudflare-region-key="us"
           - --cloudflare-record-comment="provisioned by external-dns"
         env:
           - name: CF_API_TOKEN
