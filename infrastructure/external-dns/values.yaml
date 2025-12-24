@@ -1,0 +1,18 @@
+logLevel: debug
+provider:
+  name: cloudflare
+sources:
+  - istio-gateway
+  - service
+  - ingress
+extraArgs:
+  - --cloudflare-proxied
+  - --cloudflare-regional-services
+  - --cloudflare-region-key="us"
+  - --cloudflare-record-comment="provisioned by external-dns"
+env:
+  - name: CF_API_TOKEN
+    valueFrom:
+      secretKeyRef:
+        name: cloudflare-api-key
+        key: apiKey

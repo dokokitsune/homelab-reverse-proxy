@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: infra-controllers
+  name: istio-configs
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "0" 
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   project: default
   source:
     repoURL: https://github.com/dokokitsune/homelab-reverse-proxy.git
     targetRevision: main
-    path: infrastructure/controllers 
+    path: infrastructure/config/istio
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: istio-system
   syncPolicy:
     automated:
       prune: true

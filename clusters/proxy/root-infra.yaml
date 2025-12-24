@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: infra-configs
+  name: root-infra
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "1"
 spec:
   project: default
   source:
     repoURL: https://github.com/dokokitsune/homelab-reverse-proxy.git
     targetRevision: main
-    path: infrastructure/config
+    path: infrastructure
+  directory:
+    recursive: true
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
