@@ -12,7 +12,7 @@ spec:
     repoURL: https://kubernetes-sigs.github.io/external-dns/
     targetRevision: 1.19.0
     helm:
-      valuesObjects:
+      valuesObject:
         logLevel: debug
         provider:
           name: cloudflare
